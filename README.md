@@ -16,7 +16,21 @@ The idea is start short and simple, let's say just to create a HTML converter. T
 
 This is supposed to be a personal project, I don't expect a lot of people to see it right now.
 
-### REFERENCE ###
+### MAIN REFERENCE ###
+
+MOZILLA DEVELOPER NETWORK. Basic HTML syntax. MDN Web Docs, 2026. Available at: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax. Accessed on: 16 Aug. 2026.
+
+MICROSOFT. Introduction to Office Scripts in Excel. Microsoft Support, 2026. Available at: https://support.microsoft.com/en-US/Excel/office-scripts/introduction-to-office-scripts-in-excel. Accessed on: 16 Aug. 2026.
+
+MICROSOFT. Introduction to Python in Excel. Microsoft Support, 2026. Available at: https://support.microsoft.com/en-us/excel/python/introduction-to-python-in-excel. Accessed on: 16 Aug. 2026.
+
+MICROSOFT. Open-source libraries and Python in Excel. Microsoft Support, 2026. Available at: https://support.microsoft.com/en-us/office/open-source-libraries-and-python-in-excel-c817c897-41db-40a1-b9f3-d5ffe6d1bf3e. Accessed on: 16 Aug. 2026.
+
+SAP. SAP Fieldglass Help Portal. Available at: https://help.sap.com/docs/SAP_Fieldglass?locale=en-US&version=LATEST. Acessed on: 31 ago. 2026.
+
+SAP. SAP Fieldglass Connector Library. Available at: https://help.sap.com/docs/SAP_FIELDGLASS_INTEGRATION/9cfd5c12ee3046d59453e73974f9c4b7/de446f74158b4f09be8766e3673fee2c.html?locale=en-US&version=LATEST. Acessed on: 31 ago. 2026.
+
+### ADDITINOAL REFERENCE ###
 
 PYTHON PACKAGING AUTHORITY. *Install packages in a virtual environment using pip and venv*. Python Packaging User Guide, 2026. Available at: <https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/>. Accessed on: 16 Aug. 2026.
 
@@ -27,8 +41,6 @@ PIP DOCUMENTATION AUTHORS. *User Guide*. pip documentation, 2026. Available at: 
 FINEGAN, Kate. *Python Virtual Environments: A Primer*. Real Python, 2025. Available at: <https://realpython.com/python-virtual-environments-a-primer/>. Accessed on: 16 Aug. 2026.
 
 REAL PYTHON. *Virtual environments: Python best practices*. Real Python, 2026. Available at: <https://realpython.com/ref/best-practices/virtual-environments/>. Accessed on: 16 Aug. 2026.
-
-MOZILLA DEVELOPER NETWORK. Basic HTML syntax. MDN Web Docs, 2026. Available at: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax. Accessed on: 16 Aug. 2026.
 
 MOZILLA DEVELOPER NETWORK. HTML: Creating the content. MDN Web Docs, 2025. Available at: https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website/Creating_the_content. Accessed on: 16 Aug. 2026.
 
@@ -43,9 +55,3 @@ PYTHON SOFTWARE FOUNDATION. pathlib — Object-oriented filesystem paths. Python
 PYTHON SOFTWARE FOUNDATION. Input and output. Python 3.14 documentation, 2026. Available at: https://docs.python.org/3/tutorial/inputoutput.html. Accessed on: 16 Aug. 2026.
 
 PYTHON SOFTWARE FOUNDATION. csv — CSV File Reading and Writing. Python 3.14 documentation, 2026. Available at: https://docs.python.org/3/library/csv.html. Accessed on: 16 Aug. 2026.
-
-MICROSOFT. Introduction to Office Scripts in Excel. Microsoft Support, 2026. Available at: https://support.microsoft.com/en-US/Excel/office-scripts/introduction-to-office-scripts-in-excel. Accessed on: 16 Aug. 2026.
-
-MICROSOFT. Introduction to Python in Excel. Microsoft Support, 2026. Available at: https://support.microsoft.com/en-us/excel/python/introduction-to-python-in-excel. Accessed on: 16 Aug. 2026.
-
-MICROSOFT. Open-source libraries and Python in Excel. Microsoft Support, 2026. Available at: https://support.microsoft.com/en-us/office/open-source-libraries-and-python-in-excel-c817c897-41db-40a1-b9f3-d5ffe6d1bf3e. Accessed on: 16 Aug. 2026.
