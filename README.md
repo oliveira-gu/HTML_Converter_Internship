@@ -1,57 +1,94 @@
-## HTML Converter ##
+# Conversor de Texto Rico para HTML
 
-I will be using this file to work on my Project regarindg HTML single line conversion. Basically the idea here is to get rich text such as bullet points, bold and italic letters, even some special punctuations and to convert it into HTML-format.
+Ferramenta de linha de comando que converte texto rico (copiado do Word ou Excel) em uma **string HTML de linha única**, adequada para sistemas de importação via CSV que não aceitam quebras de linha dentro de campos.
 
-### Project Structure ###
+## Motivação
 
-- Understand how the computer reads rich text;
-- How the web process it through the HTML file;
-- How Microsoft Excel reads text and the tools available to work with it;
-- How to create a Python script to convert rich text to HTML;
-- How to integrate this script into Excel;
+Algumas plataformas de gestão de força de trabalho utilizam conectores de upload via CSV para importar descrições de vagas ou modelos de texto. Um problema comum nesses conectores é que qualquer quebra de linha dentro de um campo CSV é interpretada como início de um novo registro, corrompendo a importação.
 
-### Key notes ###
+A solução é representar a formatação do texto em HTML — listas, parágrafos, negrito, itálico — em uma única linha contínua. Este projeto automatiza essa conversão.
 
-The idea is start short and simple, let's say just to create a HTML converter. Then we can start working on Python script and automation, whatever.
+## Estrutura do Projeto
 
-This is supposed to be a personal project, I don't expect a lot of people to see it right now.
+| Arquivo | Função |
+|---|---|
+| `converter.py` | Lógica principal de conversão. `convert(raw)` para entrada de texto simples; `convert_runs(paragraphs)` para dados de runs do Excel. Também é o ponto de entrada do modo interativo. |
+| `xlsx_reader.py` | Lê um arquivo `.xlsx` com openpyxl e extrai os runs de texto rico de cada célula como namedtuples `Run`. |
+| `batch.py` | CLI de lote: detecta `.csv` ou `.xlsx` pela extensão e encaminha para a conversão adequada. Grava o CSV de saída. |
 
-### MAIN REFERENCE ###
+## Requisitos
 
-MOZILLA DEVELOPER NETWORK. Basic HTML syntax. MDN Web Docs, 2026. Available at: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax. Accessed on: 16 Aug. 2026.
+- Python 3.8 ou superior
+- Para modo de lote com arquivos Excel: `openpyxl`
 
-MICROSOFT. Introduction to Office Scripts in Excel. Microsoft Support, 2026. Available at: https://support.microsoft.com/en-US/Excel/office-scripts/introduction-to-office-scripts-in-excel. Accessed on: 16 Aug. 2026.
+```bash
+pip install openpyxl
+```
 
-MICROSOFT. Introduction to Python in Excel. Microsoft Support, 2026. Available at: https://support.microsoft.com/en-us/excel/python/introduction-to-python-in-excel. Accessed on: 16 Aug. 2026.
+No Windows, se o comando `python` não funcionar, use `py -3` ou o caminho completo do interpretador.
 
-MICROSOFT. Open-source libraries and Python in Excel. Microsoft Support, 2026. Available at: https://support.microsoft.com/en-us/office/open-source-libraries-and-python-in-excel-c817c897-41db-40a1-b9f3-d5ffe6d1bf3e. Accessed on: 16 Aug. 2026.
+## Como Usar
 
-SAP. SAP Fieldglass Help Portal. Available at: https://help.sap.com/docs/SAP_Fieldglass?locale=en-US&version=LATEST. Acessed on: 31 ago. 2026.
+### Modo interativo — colar e converter (texto simples)
 
-SAP. SAP Fieldglass Connector Library. Available at: https://help.sap.com/docs/SAP_FIELDGLASS_INTEGRATION/9cfd5c12ee3046d59453e73974f9c4b7/de446f74158b4f09be8766e3673fee2c.html?locale=en-US&version=LATEST. Acessed on: 31 ago. 2026.
+```bash
+py -3 converter.py
+```
 
-### ADDITINOAL REFERENCE ###
+Cole o texto quando solicitado. No Windows, finalize com **Ctrl-Z e depois Enter**. No Mac/Linux, use **Ctrl-D**. O HTML de linha única é impresso no terminal, pronto para copiar.
 
-PYTHON PACKAGING AUTHORITY. *Install packages in a virtual environment using pip and venv*. Python Packaging User Guide, 2026. Available at: <https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/>. Accessed on: 16 Aug. 2026.
+**Via pipe (para testes rápidos):**
 
-PYTHON PACKAGING AUTHORITY. *Python virtual environments*. Python Packaging User Guide, 2026. Available at: <https://packaging.python.org/en/latest/specifications/virtual-environments/>. Accessed on: 16 Aug. 2026.
+```bash
+printf -- '- Primeiro item\n- Segundo item' | py -3 converter.py
+```
 
-PIP DOCUMENTATION AUTHORS. *User Guide*. pip documentation, 2026. Available at: <https://pip.pypa.io/en/stable/user_guide/>. Accessed on: 16 Aug. 2026.
+### Modo de lote — converter arquivo CSV (texto simples)
 
-FINEGAN, Kate. *Python Virtual Environments: A Primer*. Real Python, 2025. Available at: <https://realpython.com/python-virtual-environments-a-primer/>. Accessed on: 16 Aug. 2026.
+```bash
+# Descobrir nomes de colunas:
+py -3 batch.py --input dados.csv --list-columns
 
-REAL PYTHON. *Virtual environments: Python best practices*. Real Python, 2026. Available at: <https://realpython.com/ref/best-practices/virtual-environments/>. Accessed on: 16 Aug. 2026.
+# Converter a coluna "Descrição":
+py -3 batch.py --input dados.csv --output resultado.csv --column "Descrição"
+```
 
-MOZILLA DEVELOPER NETWORK. HTML: Creating the content. MDN Web Docs, 2025. Available at: https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website/Creating_the_content. Accessed on: 16 Aug. 2026.
+### Modo de lote — converter arquivo Excel (preserva negrito, itálico, sublinhado)
 
-MOZILLA DEVELOPER NETWORK. HTML reference. MDN Web Docs, 2025. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference. Accessed on: 16 Aug. 2026.
+```bash
+# Descobrir nomes de colunas:
+py -3 batch.py --input dados.xlsx --list-columns
 
-PYTHON SOFTWARE FOUNDATION. html — HyperText Markup Language support. Python 3.14 documentation, 2026. Available at: https://docs.python.org/3/library/html.html. Accessed on: 16 Aug. 2026.
+# Converter e gravar resultado.csv:
+py -3 batch.py --input dados.xlsx --output resultado.csv --column "Descrição"
 
-PYTHON SOFTWARE FOUNDATION. re — Regular expression operations. Python 3.14 documentation, 2026. Available at: https://docs.python.org/3/library/re.html. Accessed on: 16 Aug. 2026.
+# Especificar planilha (se houver múltiplas abas):
+py -3 batch.py --input dados.xlsx --output resultado.csv --column "Descrição" --sheet "Planilha1"
 
-PYTHON SOFTWARE FOUNDATION. pathlib — Object-oriented filesystem paths. Python 3.13 documentation, 2026. Available at: https://docs.python.org/3.13/library/pathlib.html. Accessed on: 16 Aug. 2026.
+# Especificar linha de cabeçalho (se os cabeçalhos não estiverem na linha 1):
+py -3 batch.py --input dados.xlsx --output resultado.csv --column "Descrição" --header-row 3
+```
 
-PYTHON SOFTWARE FOUNDATION. Input and output. Python 3.14 documentation, 2026. Available at: https://docs.python.org/3/tutorial/inputoutput.html. Accessed on: 16 Aug. 2026.
+O CSV de saída é gravado em UTF-8 com BOM para abrir corretamente no Excel no Windows.
 
-PYTHON SOFTWARE FOUNDATION. csv — CSV File Reading and Writing. Python 3.14 documentation, 2026. Available at: https://docs.python.org/3/library/csv.html. Accessed on: 16 Aug. 2026.
+## O que é convertido
+
+| Entrada | Saída HTML |
+|---|---|
+| `- item` / `* item` / `• item` | `<ul><li>item</li></ul>` |
+| `1. item` / `1) item` | `<ol><li>item</li></ol>` |
+| Quebra de linha simples dentro de um bloco | `<br>` |
+| Linha em branco entre blocos | `<br><br>` |
+| URL `http(s)://` nua | `<a href="...">...</a>` |
+| `&`, `<`, `>` no texto | Escapados (`&amp;`, `&lt;`, `&gt;`) |
+| **Run em negrito (modo Excel)** | `<strong>...</strong>` |
+| **Run em itálico (modo Excel)** | `<em>...</em>` |
+| **Run sublinhado (modo Excel)** | `<u>...</u>` |
+
+Aspas inteligentes, travessões e espaços especiais do Word são normalizados para ASCII equivalente. A saída tem garantia de não conter `\n` ou `\r`.
+
+## O que não é suportado (por design)
+
+- **Sem `<strong>` / `<em>` / `<u>` a partir de texto simples ou CSV.** Esses formatos não carregam metadados de formatação. Use o modo de lote com `.xlsx` para obter essas tags.
+- **Sem entrada `.docx`.** Apenas `.xlsx` é suportado para processamento em lote com texto rico.
+- **Sem conversão direta na planilha.** A ferramenta opera externamente sobre o arquivo; não modifica o arquivo original.
