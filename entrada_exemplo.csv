@@ -1,0 +1,10 @@
+﻿ID,Descrição,Categoria
+EX-001,"Primeira linha
+Segunda linha",Quebras de linha
+EX-002,"- Primeiro requisito
+- Segundo requisito",Lista não ordenada
+EX-003,"1. Preparar dados
+2. Validar resultado",Lista ordenada
+EX-004,Texto com & e <sinal> e aspas “especiais”.,Caracteres especiais
+EX-005,Documentação: https://example.org/guia,URL
+EX-006,"Uma linha, com vírgula e ""aspas"".",Delimitadores CSV

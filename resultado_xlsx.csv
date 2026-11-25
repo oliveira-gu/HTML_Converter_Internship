@@ -1,0 +1,8 @@
+﻿ID,Descrição,Categoria
+EX-101,<strong>Título formatado</strong>,Negrito (célula inteira)
+EX-102,<em>Resumo em itálico</em>,Itálico (célula inteira)
+EX-103,Texto sublinhado,Sublinhado (célula inteira)
+EX-104,Parágrafo inicial<br>Parágrafo seguinte,Quebra de linha
+EX-105,<ul><li>Configurar ambiente</li><li>Validar integração</li></ul>,Lista não ordenada
+EX-106,"Mais detalhes: <a href=""https://example.org/ajuda"">https://example.org/ajuda</a>",URL
+EX-107,"""Aviso"" &amp; &lt;documentação&gt;",Caracteres especiais
